@@ -21,6 +21,9 @@ app.post('/api/tasks',(req,res)=>{
         // agregar validación para tamaño del titulo
         //if(title){}
         
+        // agregar la validación del priority, solo puede ser "alta", "media" o "baja
+        //if(priority){}
+        
         tasks.push(task);
 
         res.json({status:200,message:'Success',data: task});
