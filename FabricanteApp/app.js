@@ -1,0 +1,16 @@
+const express = require('express');
+const app = express();
+
+require('dotenv').config();
+
+const PORT = process.env.PORT;
+const fabricanteRoute = require('./routes/fabricanteRoute');
+const authRoute = require('./routes/authRoute');
+app.use(express.json());
+
+app.use('/api', fabricanteRoute);
+app.use('/api', authRoute);
+
+app.listen(PORT, ()=>{
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+});
