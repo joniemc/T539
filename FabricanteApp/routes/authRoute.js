@@ -8,8 +8,18 @@ const authMiddleware = require('../middleware/authMiddleware');
 
 require('dotenv').config();
 
-router.get('/hello', authMiddleware,(req,res)=>{
-    res.send('Hello Routes');
+router.get('/users', authMiddleware,(req,res)=>{
+    const sql = 'select id as code, username from usuario';
+
+    pool.query(sql, [], (err, results)=>{
+        if(err){
+            return res.status(500).json({status:500, message:'Ocurrio un error de conexión con el servidor..'});
+        }
+
+ 
+        return res.status(200).json({status:200, message:'Success',data:results});
+ 
+    });
 });
 
 router.post('/login',async (req, res)=>{

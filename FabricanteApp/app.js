@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
+const cors = require('cors');
 
 require('dotenv').config();
 
 const PORT = process.env.PORT;
 const fabricanteRoute = require('./routes/fabricanteRoute');
 const authRoute = require('./routes/authRoute');
+
+app.use(cors());
 app.use(express.json());
 
 app.use('/api', fabricanteRoute);
